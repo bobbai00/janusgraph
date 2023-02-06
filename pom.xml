@@ -83,6 +83,7 @@
         <jna.version>5.12.1</jna.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <janusgraph-foundationdb.version>0.5.3-nugraph-1.7.5-RELEASE</janusgraph-foundationdb.version>
         <janusgraph.testdir>${project.build.directory}/janusgraph-test</janusgraph.testdir>
         <gpg.skip>false</gpg.skip>
         <maven.gpg.version>3.0.1</maven.gpg.version>
@@ -525,6 +526,11 @@
                 <groupId>org.apache.tinkerpop</groupId>
                 <artifactId>gremlin-console</artifactId>
                 <version>${tinkerpop.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.janusgraph</groupId>
+                <artifactId>janusgraph-foundationdb</artifactId>
+                <version>${janusgraph-foundationdb.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.tinkerpop</groupId>
