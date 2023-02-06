@@ -11,6 +11,7 @@
     <url>https://janusgraph.org</url>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <janusgraph-foundationdb.version>0.5.3-nugraph-1.7.5-RELEASE</janusgraph-foundationdb.version>
     </properties>
     <dependencies>
         <dependency>
@@ -27,7 +28,11 @@
             <groupId>org.apache.tinkerpop</groupId>
             <artifactId>gremlin-server</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>org.janusgraph</groupId>
+            <artifactId>janusgraph-foundationdb</artifactId>
+            <version>${janusgraph-foundationdb.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
@@ -103,6 +108,32 @@
                         <goals>
                             <goal>integration-test</goal>
                             <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <!-- Build an executable JAR -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>org.janusgraph.graphdb.server.JanusGraphServer</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.4</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
                         </goals>
                     </execution>
                 </executions>

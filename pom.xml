@@ -527,11 +527,11 @@
                 <artifactId>gremlin-console</artifactId>
                 <version>${tinkerpop.version}</version>
             </dependency>
-            <dependency>
-                <groupId>org.janusgraph</groupId>
-                <artifactId>janusgraph-foundationdb</artifactId>
-                <version>${janusgraph-foundationdb.version}</version>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>org.janusgraph</groupId>-->
+<!--                <artifactId>janusgraph-foundationdb</artifactId>-->
+<!--                <version>${janusgraph-foundationdb.version}</version>-->
+<!--            </dependency>-->
             <dependency>
                 <groupId>org.apache.tinkerpop</groupId>
                 <artifactId>gremlin-groovy</artifactId>
