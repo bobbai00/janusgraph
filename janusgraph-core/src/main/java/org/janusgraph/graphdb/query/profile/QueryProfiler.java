@@ -19,11 +19,24 @@ import org.janusgraph.graphdb.query.graph.JointIndexQuery.Subquery;
 
 import java.util.Collection;
 import java.util.function.Function;
+import java.lang.instrument.Instrumentation;
 
 /**
  * @author Matthias Broecheler (me@matthiasb.com)
  */
 public interface QueryProfiler {
+
+    public class ObjectSizeFetcher {
+        private static Instrumentation instrumentation;
+
+        public static void premain(String args, Instrumentation inst) {
+            instrumentation = inst;
+        }
+
+        public static long getObjectSize(Object o) {
+            return instrumentation.getObjectSize(o);
+        }
+    }
 
     String CONDITION_ANNOTATION = "condition";
     String ORDERS_ANNOTATION = "orders";
@@ -66,6 +79,11 @@ public interface QueryProfiler {
         @Override
         public void setResultSize(long size) {
         }
+
+        @Override
+        public void setResultNumOfBytes(long bytes) {
+
+        }
     };
 
 
@@ -78,6 +96,8 @@ public interface QueryProfiler {
     void stopTimer();
 
     void setResultSize(long size);
+
+    public void setResultNumOfBytes(long bytes);
 
     static<Q extends Query,R extends Collection> R profile(QueryProfiler profiler, Q query, Function<Q,R> queryExecutor) {
         return profile(profiler,query,false,queryExecutor);
@@ -109,6 +129,7 @@ public interface QueryProfiler {
             resultSize = result.size();
         }
         sub.setResultSize(resultSize);
+        sub.setResultNumOfBytes(ObjectSizeFetcher.getObjectSize(result));
         return result;
     }
 

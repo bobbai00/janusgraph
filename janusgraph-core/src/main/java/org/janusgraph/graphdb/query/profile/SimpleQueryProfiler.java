@@ -19,6 +19,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.util.*;
 
+
 /**
  * @author Matthias Broecheler (me@matthiasb.com)
  */
@@ -29,6 +30,7 @@ public class SimpleQueryProfiler implements QueryProfiler, Iterable<SimpleQueryP
 
     private final String groupName;
     private long resultSize = 0;
+    private long resultNumOfBytes = 0;
 
     private long startTimeNs = 0;
     private boolean runningTimer = false;
@@ -88,6 +90,11 @@ public class SimpleQueryProfiler implements QueryProfiler, Iterable<SimpleQueryP
     public void setResultSize(long size) {
         Preconditions.checkArgument(size>=0);
         this.resultSize=size;
+    }
+
+    public void setResultNumOfBytes(long bytes) {
+        Preconditions.checkArgument(bytes>=0);
+        this.resultNumOfBytes = bytes;
     }
 
     //RETRIEVAL METHODS

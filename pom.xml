@@ -69,7 +69,7 @@
     </distributionManagement>
     <properties>
         <titan.compatible-versions>1.0.0,1.1.0-SNAPSHOT</titan.compatible-versions>
-        <tinkerpop.version>3.4.6</tinkerpop.version>
+        <tinkerpop.version>3.4.6-bob</tinkerpop.version>
         <junit-platform.version>1.5.2</junit-platform.version>
         <junit.version>5.5.2</junit.version>
         <mrunit.version>1.1.0</mrunit.version>
@@ -139,14 +139,14 @@
         <module>janusgraph-cql</module>
         <module>janusgraph-cassandra</module>
         <module>janusgraph-hadoop</module>
-        <module>janusgraph-hbase-parent</module>
+<!--        <module>janusgraph-hbase-parent</module>-->
         <module>janusgraph-bigtable</module>
         <module>janusgraph-es</module>
         <module>janusgraph-lucene</module>
         <module>janusgraph-all</module>
         <module>janusgraph-dist</module>
         <module>janusgraph-doc</module>
-        <module>janusgraph-solr</module>
+<!--        <module>janusgraph-solr</module>-->
         <module>janusgraph-examples</module>
     </modules>
     <repositories>

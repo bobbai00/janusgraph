@@ -65,4 +65,9 @@ public class TP3ProfileWrapper implements QueryProfiler {
     public void setResultSize(long size) {
         metrics.incrementCount(TraversalMetrics.ELEMENT_COUNT_ID,size);
     }
+
+    @Override
+    public void setResultNumOfBytes(long bytes) {
+        metrics.incrementCount(TraversalMetrics.NUM_OF_BYTES_ID,bytes);
+    }
 }
